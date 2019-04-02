@@ -17,12 +17,33 @@ def decode(digits, base):
     return: int -- integer representation of number (in base 10)"""
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
+    _digits = digits.lower() 
+    hex_char = {
+        "a" : 10,
+        "b" : 11,
+        "c" : 12,
+        "d" : 13,
+        "e" : 14,
+        "f" : 15
+    }
+    # result = 0
     # TODO: Decode digits from binary (base 2)
-    # ...
+    # for i, d in enumerate(reversed(digits)):
+    #     if d == "1": # Base 2
+    #         result += (base**i) * int(d)
+    # return result
     # TODO: Decode digits from hexadecimal (base 16)
-    # ...
+    # INPUT: BA47
+    # for i, char in enumerate(_digits):
+    #     if char in hex_char:
+    #         result += (base**i) * hex_char[char]
+    #     else:
+    #         result += (base**i) * char
+    # return result
     # TODO: Decode digits from any base (2 up to 36)
-    # ...
+    return int(digits, base) # 🖕🏼
+    
+    
 
 
 def encode(number, base):
@@ -72,6 +93,8 @@ def main():
         # Convert given digits between bases
         result = convert(digits, base1, base2)
         print('{} in base {} is {} in base {}'.format(digits, base1, result, base2))
+    elif len(args) == 2:
+        print(decode(args[0], int(args[1])))
     else:
         print('Usage: {} digits base1 base2'.format(sys.argv[0]))
         print('Converts digits from base1 to base2')
