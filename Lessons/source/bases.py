@@ -18,14 +18,14 @@ def decode(digits, base):
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     _digits = digits.lower() 
-    hex_char = {
-        "a" : 10,
-        "b" : 11,
-        "c" : 12,
-        "d" : 13,
-        "e" : 14,
-        "f" : 15
-    }
+    # hex_char = {
+    #     "a" : 10,
+    #     "b" : 11,
+    #     "c" : 12,
+    #     "d" : 13,
+    #     "e" : 14,
+    #     "f" : 15
+    # }
     # result = 0
     # TODO: Decode digits from binary (base 2)
     # for i, d in enumerate(reversed(digits)):
