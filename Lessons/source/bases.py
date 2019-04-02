@@ -17,31 +17,30 @@ def decode(digits, base):
     return: int -- integer representation of number (in base 10)"""
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
-    _digits = digits.lower() 
-    # hex_char = {
-    #     "a" : 10,
-    #     "b" : 11,
-    #     "c" : 12,
-    #     "d" : 13,
-    #     "e" : 14,
-    #     "f" : 15
-    # }
-    # result = 0
+    _digits = digits.upper() 
+    result = 0
     # TODO: Decode digits from binary (base 2)
     # for i, d in enumerate(reversed(digits)):
     #     if d == "1": # Base 2
     #         result += (base**i) * int(d)
     # return result
-    # TODO: Decode digits from hexadecimal (base 16)
+    # TODO: Decode digits from hexadecimal (base 16) and # TODO: Decode digits from any base (2 up to 36)
     # INPUT: BA47
-    # for i, char in enumerate(_digits):
-    #     if char in hex_char:
-    #         result += (base**i) * hex_char[char]
-    #     else:
-    #         result += (base**i) * char
-    # return result
-    # TODO: Decode digits from any base (2 up to 36)
-    return int(digits, base) # 🖕🏼
+    if base > 2:
+        for i, char in enumerate(_digits):
+            if char in string.ascii_uppercase:
+                print(i)
+                print(string.ascii_uppercase.index(char) + 10)
+                result += (base**i) * (string.ascii_uppercase.index(char) + 10)
+            else:
+                result += (base**i) * int(char)
+    elif base == 2:
+        for i, d in enumerate(reversed(digits)):
+            if d == "1":
+                result += (base**i) * int(d)
+    return result
+
+    # return int(digits, base) # 🖕🏼
     
     
 
