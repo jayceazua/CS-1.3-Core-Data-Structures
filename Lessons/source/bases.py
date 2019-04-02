@@ -40,7 +40,20 @@ def encode(number, base):
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
+    remainders = []
+    current_quotient = number
+    # Steps to encode: source
+    # 1. Divide the decimal number by base and store remainders in array.
+    # 2. Divide the quotient by base.
+    # 3. Repeat step 2. until we get the quotient equal to zero.
+    # 4. Equivalent binary number would be reverse of all remainders of step 1.
     # TODO: Encode number in binary (base 2)
+    while current_quotient <= 0:
+        return reversed(remainders)
+    else:
+        print(current_quotient)
+        remainders.append(current_quotient % 2)
+        current_quotient / 2
     # TODO: Encode number in hexadecimal (base 16)
     # TODO: Encode number in any base (2 up to 36)
 
