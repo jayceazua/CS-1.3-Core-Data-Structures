@@ -25,22 +25,13 @@ def decode(digits, base):
     #         result += (base**i) * int(d)
     # return result
     # TODO: Decode digits from hexadecimal (base 16) and # TODO: Decode digits from any base (2 up to 36)
-    # INPUT: BA47
-    if base > 2:
-        for i, char in enumerate(_digits):
-            if char in string.ascii_uppercase:
-                print(i)
-                print(string.ascii_uppercase.index(char) + 10)
-                result += (base**i) * (string.ascii_uppercase.index(char) + 10)
-            else:
-                result += (base**i) * int(char)
-    elif base == 2:
-        for i, d in enumerate(reversed(digits)):
-            if d == "1":
-                result += (base**i) * int(d)
+    for i, char in enumerate(reversed(_digits)):
+        if char in string.ascii_uppercase:
+            result += (base**i) * (string.ascii_uppercase.index(char) + 10)
+        else:
+            result += (base**i) * int(char)
     return result
-
-    # return int(digits, base) # 🖕🏼
+    # return int(digits, base) # 🖕🏼best solution
     
     
 
