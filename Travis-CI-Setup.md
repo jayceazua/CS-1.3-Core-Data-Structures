@@ -39,6 +39,7 @@ Here is an example `travis.yml` file:
 
 Now commit and push to your repo. Log in to your Travis CI account to see your build status, as well as what tests pass/fail!
 
+
 ## Resources
 
 - [Travis CI Documentation](https://docs.travis-ci.com/)
