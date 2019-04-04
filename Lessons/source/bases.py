@@ -18,13 +18,18 @@ def decode(digits, base):
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     poss_digits = string.digits + string.ascii_uppercase
+    # Jake Shams helped me optimize this function.
+    poss_dic_dig = {}
+    for i, d in enumerate(poss_digits): 
+        poss_dic_dig[d] = i
+
     _digits = digits.upper() 
     result = 0
     # TODO: Decode digits from binary (base 2) 
     # TODO: Decode digits from hexadecimal (base 16)
     # TODO: Decode digits from any base (2 up to 36)
     for i, char in enumerate(reversed(_digits)):
-        result += (base**i) * poss_digits.index(char)
+        result += (base**i) * poss_dic_dig[char]
     return result
     # return int(digits, base) # 🖕🏼best solution
     
@@ -40,22 +45,15 @@ def encode(number, base):
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
-    remainders = []
-    current_quotient = number
     # Steps to encode: source
     # 1. Divide the decimal number by base and store remainders in array.
     # 2. Divide the quotient by base.
     # 3. Repeat step 2. until we get the quotient equal to zero.
     # 4. Equivalent binary number would be reverse of all remainders of step 1.
     # TODO: Encode number in binary (base 2)
-    while current_quotient <= 0:
-        return reversed(remainders)
-    else:
-        print(current_quotient)
-        remainders.append(current_quotient % 2)
-        current_quotient / 2
     # TODO: Encode number in hexadecimal (base 16)
     # TODO: Encode number in any base (2 up to 36)
+    
 
     
 
