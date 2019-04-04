@@ -8,7 +8,11 @@ import string
 # string.ascii_uppercase is 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 # string.ascii_letters is ascii_lowercase + ascii_uppercase
 # string.printable is digits + ascii_letters + punctuation + whitespace
-
+poss_digits = string.digits + string.ascii_lowercase
+# Jake Shams helped me optimize this function.
+poss_dic_dig = {}
+for i, d in enumerate(poss_digits):
+        poss_dic_dig[d] = i
 
 def decode(digits, base):
     """Decode given digits in given base to number in base 10.
@@ -17,12 +21,6 @@ def decode(digits, base):
     return: int -- integer representation of number (in base 10)"""
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
-    poss_digits = string.digits + string.ascii_lowercase
-    # Jake Shams helped me optimize this function.
-    poss_dic_dig = {}
-    for i, d in enumerate(poss_digits): 
-        poss_dic_dig[d] = i
-
     _digits = digits.lower() 
     result = 0
     # TODO: Decode digits from binary (base 2) 
@@ -48,6 +46,15 @@ def encode(number, base):
     # TODO: Encode number in binary (base 2)
     # TODO: Encode number in hexadecimal (base 16)
     # TODO: Encode number in any base (2 up to 36)
+    # got my logic in math here: https://www.rapidtables.com/convert/number/decimal-to-hex.html
+    q = number # keeps track of the number decreasing
+    d = []
+    while q > 0:
+        r = q % base
+        q = q // base
+        # q, r = divmod(q, base) <-- 🖕🏼optimized version
+        d.append(poss_digits[r]) # converts anything after 10 into it's appropriate character.
+    return ''.join(reversed(d))
     
 
 
