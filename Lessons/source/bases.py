@@ -17,13 +17,13 @@ def decode(digits, base):
     return: int -- integer representation of number (in base 10)"""
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
-    poss_digits = string.digits + string.ascii_uppercase
+    poss_digits = string.digits + string.ascii_lowercase
     # Jake Shams helped me optimize this function.
     poss_dic_dig = {}
     for i, d in enumerate(poss_digits): 
         poss_dic_dig[d] = i
 
-    _digits = digits.upper() 
+    _digits = digits.lower() 
     result = 0
     # TODO: Decode digits from binary (base 2) 
     # TODO: Decode digits from hexadecimal (base 16)
@@ -45,15 +45,12 @@ def encode(number, base):
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
-    # Steps to encode: source
-    # 1. Divide the decimal number by base and store remainders in array.
-    # 2. Divide the quotient by base.
-    # 3. Repeat step 2. until we get the quotient equal to zero.
-    # 4. Equivalent binary number would be reverse of all remainders of step 1.
     # TODO: Encode number in binary (base 2)
     # TODO: Encode number in hexadecimal (base 16)
     # TODO: Encode number in any base (2 up to 36)
     
+
+
 
     
 
@@ -85,7 +82,7 @@ def main():
         result = convert(digits, base1, base2)
         print('{} in base {} is {} in base {}'.format(digits, base1, result, base2))
     elif len(args) == 2:
-        print(decode(args[0], int(args[1])))
+        print(encode(int(args[0]), int(args[1])))
     else:
         print('Usage: {} digits base1 base2'.format(sys.argv[0]))
         print('Converts digits from base1 to base2')
