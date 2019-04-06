@@ -8,11 +8,13 @@ import string
 # string.ascii_uppercase is 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 # string.ascii_letters is ascii_lowercase + ascii_uppercase
 # string.printable is digits + ascii_letters + punctuation + whitespace
+
 poss_digits = string.digits + string.ascii_lowercase
 # Jake Shams helped me optimize this function.
 poss_dic_dig = {}
 for i, d in enumerate(poss_digits):
         poss_dic_dig[d] = i
+
 
 def decode(digits, base):
     """Decode given digits in given base to number in base 10.
@@ -26,14 +28,12 @@ def decode(digits, base):
     # TODO: Decode digits from binary (base 2) 
     # TODO: Decode digits from hexadecimal (base 16)
     # TODO: Decode digits from any base (2 up to 36)
-    for i, char in enumerate(reversed(_digits)):
-        result += (base**i) * poss_dic_dig[char]
+    for index, character in enumerate(reversed(_digits)):
+        result += (base**index) * poss_dic_dig[character]
     return result
     # return int(digits, base) # 🖕🏼best solution
     
     
-
-
 def encode(number, base):
     """Encode given number in base 10 to digits in given base.
     number: int -- integer representation of number (in base 10)
@@ -47,20 +47,15 @@ def encode(number, base):
     # TODO: Encode number in hexadecimal (base 16)
     # TODO: Encode number in any base (2 up to 36)
     # got my logic in math here: https://www.rapidtables.com/convert/number/decimal-to-hex.html
-    q = number # keeps track of the number decreasing
-    d = []
-    while q > 0:
+    quotient = number  # keeps track of the number decreasing
+    digits_array = []
+    while quotient > 0:
         # r = q % base
         # q = q // base
-        q, r = divmod(q, base)  # <-- 🖕🏼optimized version
-        d.append(poss_digits[r]) # converts anything after 10 into it's appropriate character.
-    return ''.join(reversed(d))
+        quotient, remainder = divmod(quotient, base)  # <-- 🖕🏼optimized version
+        digits_array.append(poss_digits[remainder]) # converts anything after 10 into it's appropriate character.
+    return ''.join(reversed(digits_array))
     
-
-
-
-    
-
 
 def convert(digits, base1, base2):
     """Convert given digits in base1 to digits in base2.
