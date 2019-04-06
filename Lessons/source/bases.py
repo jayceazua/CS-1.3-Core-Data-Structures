@@ -50,9 +50,9 @@ def encode(number, base):
     q = number # keeps track of the number decreasing
     d = []
     while q > 0:
-        r = q % base
-        q = q // base
-        # q, r = divmod(q, base) <-- 🖕🏼optimized version
+        # r = q % base
+        # q = q // base
+        q, r = divmod(q, base)  # <-- 🖕🏼optimized version
         d.append(poss_digits[r]) # converts anything after 10 into it's appropriate character.
     return ''.join(reversed(d))
     
@@ -75,6 +75,7 @@ def convert(digits, base1, base2):
     # TODO: Convert digits from base 2 to base 10 (and vice versa)
     # TODO: Convert digits from base 10 to base 16 (and vice versa)
     # TODO: Convert digits from any base to any base (2 up to 36)
+    return encode(decode(digits, base1), base2)
 
 
 def main():
