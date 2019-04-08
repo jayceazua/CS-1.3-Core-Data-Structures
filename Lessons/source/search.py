@@ -41,8 +41,31 @@ def binary_search_iterative(array, item):
     # TODO: implement binary search iteratively here
     # once implemented, change binary_search to call binary_search_iterative
     # to verify that your iterative implementation passes all tests
-    # get the middle index
-    pass
+    #  create a variable for the left and right boundaries
+    left_bound = 0 # left being the start of the array
+    right_bound = (len(array) -1) # right being the end of the array
+    # add the left and right boundaries and divide them by half
+    current_middle_index = (left_bound + right_bound) // 2
+    # While the current index is between the boundaries continue
+    while left_bound <= current_middle_index and right_bound >= current_middle_index:
+        # if the current index value is equal to the item we are searching for
+        if array[current_middle_index] == item:
+            # return that current index
+            return current_middle_index
+        # if not then we move on to check if the value of that current index is greater than the item
+        elif array[current_middle_index] > item:
+            # if it is greater than that the item then we reassign the right boundary to the current index minus 1
+            right_bound = current_middle_index - 1
+        # Check is the current index value is less than
+        elif array[current_middle_index] < item:
+            # if it is less than that the item then we reassign the left boundary to the current index plus 1
+            left_bound = current_middle_index + 1
+        # then add the left anf right boundary and divide it by its half
+        current_middle_index = (left_bound + right_bound) // 2
+    # if the the item is not found return None
+    return None
+
+    
     
 
     
