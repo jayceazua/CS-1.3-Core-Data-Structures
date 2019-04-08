@@ -14,11 +14,20 @@ def factorial(n):
 
 def factorial_iterative(n):
     # TODO: implement the factorial function iteratively here
-    pass
     # once implemented, change factorial (above) to call factorial_iterative
     # to verify that your iterative implementation passes all tests
+    if n == 0 or n == 1: # check if the input n is zero or one
+        return 1 # used from below function on recursive
+    # create a variable to store the total 
+    total_value = 1
+    # for each number in the range of n plus one
+    for number in range(1, n+1):
+        # each number is then multiply to the variable above
+        total_value *= number
+    # once we stop we return the value of the product
+    return total_value
 
-
+    
 def factorial_recursive(n):
     # check if n is one of the base cases
     if n == 0 or n == 1:

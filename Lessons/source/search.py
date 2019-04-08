@@ -65,18 +65,12 @@ def binary_search_iterative(array, item):
     # if the the item is not found return None
     return None
 
-    
-    
-
-    
-
 
 def binary_search_recursive(array, item, left=None, right=None):
     # TODO: implement binary search recursively here
     # once implemented, change binary_search to call binary_search_recursive
     # to verify that your recursive implementation passes all tests
     pass
-
 
 def main():
     names = ['Winnie', 'Kojin', 'Brian', 'Nabil', 'Julia', 'Alex', 'Nick']
