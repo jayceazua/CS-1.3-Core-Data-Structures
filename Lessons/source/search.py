@@ -12,19 +12,20 @@ def linear_search_iterative(array, item):
     # loop over all array values until item is found
     for index, value in enumerate(array):
         if item == value:
-            return index  # found
-    return None  # not found
+            return index 
+    return None  
 
 
 def linear_search_recursive(array, item, index=0):
     # TODO: implement linear search recursively here
     # once implemented, change linear_search to call linear_search_recursive
     # to verify that your recursive implementation passes all tests
-    if index > (len(array) - 1):
-        return None
-    if array[index] == item:
+    if index > (len(array) - 1): # check is the index is out of range
+        return None 
+    if array[index] == item: # check if the current index value is equal to the item
         return index
     else:
+        # if it is not the same continue onto the next iteration
         return linear_search_recursive(array, item, index + 1)
 
 
@@ -33,8 +34,8 @@ def binary_search(array, item):
     # implement binary_search_iterative and binary_search_recursive below, then
     # change this to call your implementation to verify it passes all tests
     array = sorted(array)
-    return binary_search_iterative(array, item)
-    # return binary_search_recursive(array, item)
+    # return binary_search_iterative(array, item)
+    return binary_search_recursive(array, item)
 
 
 def binary_search_iterative(array, item):
@@ -42,27 +43,23 @@ def binary_search_iterative(array, item):
     # once implemented, change binary_search to call binary_search_iterative
     # to verify that your iterative implementation passes all tests
     #  create a variable for the left and right boundaries
-    left_bound = 0 # left being the start of the array
-    right_bound = (len(array) -1) # right being the end of the array
-    # add the left and right boundaries and divide them by half
-    current_middle_index = (left_bound + right_bound) // 2
-    # While the current index is between the boundaries continue
-    while left_bound <= current_middle_index and right_bound >= current_middle_index:
-        # if the current index value is equal to the item we are searching for
-        if array[current_middle_index] == item:
-            # return that current index
+    left_bound = 0 # left is the zero index of the array
+    right_bound = (len(array) -1) # right is the full length of the array
+    #
+    while left_bound <= right_bound:
+        #
+        current_middle_index = ((left_bound + right_bound) // 2) 
+        middle_value = array[current_middle_index]
+        #
+        if middle_value == item: 
             return current_middle_index
-        # if not then we move on to check if the value of that current index is greater than the item
-        elif array[current_middle_index] > item:
-            # if it is greater than that the item then we reassign the right boundary to the current index minus 1
+        #
+        elif middle_value > item:
             right_bound = current_middle_index - 1
-        # Check is the current index value is less than
-        elif array[current_middle_index] < item:
-            # if it is less than that the item then we reassign the left boundary to the current index plus 1
+        #
+        elif middle_value < item:
             left_bound = current_middle_index + 1
-        # then add the left anf right boundary and divide it by its half
-        current_middle_index = (left_bound + right_bound) // 2
-    # if the the item is not found return None
+    # never found item - python and ruby we don't need a return
     return None
 
 
@@ -70,7 +67,30 @@ def binary_search_recursive(array, item, left=None, right=None):
     # TODO: implement binary search recursively here
     # once implemented, change binary_search to call binary_search_recursive
     # to verify that your recursive implementation passes all tests
-    pass
+    #
+    if left == None and right == None:
+        left = 0
+        right = (len(array) - 1)
+    #
+    middle_index = (left + right) // 2
+    middle_value = array[middle_index]
+    # 
+    if left > right:
+        return None
+    #
+    if middle_value == item:
+        return middle_index
+    #
+    if middle_value > item:
+        right = middle_index - 1
+        return binary_search_recursive(array, item, left, right)
+    #
+    left = middle_index + 1
+    return binary_search_recursive(array, item, left, right)
+
+
+    
+
 
 def main():
     names = ['Winnie', 'Kojin', 'Brian', 'Nabil', 'Julia', 'Alex', 'Nick']
