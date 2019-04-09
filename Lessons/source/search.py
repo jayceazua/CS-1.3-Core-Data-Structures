@@ -45,18 +45,18 @@ def binary_search_iterative(array, item):
     #  create a variable for the left and right boundaries
     left_bound = 0 # left is the zero index of the array
     right_bound = (len(array) -1) # right is the full length of the array
-    #
+    # as long as the left boundary is less than our equal to the right continue our search
     while left_bound <= right_bound:
-        #
+        # cut the given current boundary and shorten the search with the current index always changing
         current_middle_index = ((left_bound + right_bound) // 2) 
         middle_value = array[current_middle_index]
-        #
+        # check if the middle index value is what we are searching for
         if middle_value == item: 
             return current_middle_index
-        #
+        # if the value is greather than move to left 
         elif middle_value > item:
             right_bound = current_middle_index - 1
-        #
+        # value is less than move to the right
         elif middle_value < item:
             left_bound = current_middle_index + 1
     # never found item - python and ruby we don't need a return
@@ -67,24 +67,26 @@ def binary_search_recursive(array, item, left=None, right=None):
     # TODO: implement binary search recursively here
     # once implemented, change binary_search to call binary_search_recursive
     # to verify that your recursive implementation passes all tests
-    #
+    # setup the left and right variables as the boundaries of our search
     if left == None and right == None:
         left = 0
         right = (len(array) - 1)
-    #
+    # get the middle of the array given and the value
     middle_index = (left + right) // 2
     middle_value = array[middle_index]
-    # 
+    # if the left boundary becomes create than the right then...
     if left > right:
+        # item was never found
         return None
-    #
+    # check that the middle index value is equal to the item and return that index
     if middle_value == item:
         return middle_index
-    #
+    # check that the value at the given middle index is greater than or less than
     if middle_value > item:
+        # move the focus towards the left side of the given array
         right = middle_index - 1
         return binary_search_recursive(array, item, left, right)
-    #
+    # move our search towards the right 
     left = middle_index + 1
     return binary_search_recursive(array, item, left, right)
 
