@@ -24,7 +24,7 @@ def factorial_iterative(n):
     for number in range(1, n+1):
         # each number is then multiply to the variable above
         total_value *= number
-    # once we stop we return the value of the product
+    # give back the total of the factorial
     return total_value
 
     
