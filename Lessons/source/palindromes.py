@@ -17,11 +17,31 @@ def is_palindrome(text):
     # return is_palindrome_recursive(text)
 
 
+LETTERS = frozenset(string.ascii_letters)  # CS1.3 in class code review - Sam's code
 def is_palindrome_iterative(text):
     # TODO: implement the is_palindrome function iteratively here
-    pass
+    left_index = 0
+    right_index = (len(text) - 1)
+    # check if right and left are equal to exit out
+    while left_index <= right_index:  # use while instead for time complex - Faith
+        # get the character from the left and make sure that it is a letter
+        while text[left_index] not in LETTERS:
+            left_index += 1
+            # increment the left
+        # right "as above as below"
+        while text[right_index] not in LETTERS:
+            right_index -= 1
+            # decrement the right until a letter is found
+        # compare the two return false if it is not thr same <- lowercase the letter
+        if text[left_index].lower() != text[right_index].lower():
+            return False
+        # else perform the increment and decrement
+        left_index += 1
+        right_index -= 1
+    return True
     # once implemented, change is_palindrome to call is_palindrome_iterative
     # to verify that your iterative implementation passes all tests
+    # prevent case sensitive errors
 
 
 def is_palindrome_recursive(text, left=None, right=None):
