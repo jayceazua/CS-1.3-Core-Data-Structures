@@ -46,28 +46,28 @@ def is_palindrome_iterative(text):
 
 def is_palindrome_recursive(text, left=None, right=None):
     # TODO: implement the is_palindrome function recursively here
-    #
+    # Set the left and right variables to their initial values if they are found to both be None
     if left == None and right == None:
         left = 0
         right = (len(text) - 1)
-    #
+    # only continue if the left index does not pass the right
     if left <= right:
-        #
+        # if the charcter on the left is not a letter restart the recusiveness with an increased left index
         if text[left] not in LETTERS:
             left += 1
             return is_palindrome_recursive(text, left, right)
-        #
+        # Same as above but checks for right and substract down on the right
         if text[right] not in LETTERS:
             right -= 1
             return is_palindrome_recursive(text, left, right)
-        #
+        # if they are not equal return False
         if text[left].lower() != text[right].lower():
             return False
-        #
+        # continue through the recursiveness 
         left += 1
         right -= 1
         return is_palindrome_recursive(text, left, right)
-    #
+    # it is a palindrome
     return True
     
     
