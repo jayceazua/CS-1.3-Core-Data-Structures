@@ -79,7 +79,7 @@ def find_all_indexes(text, pattern):
     indexes = []
     # call the find index recursive function
     # result = find_index_recursive(text, pattern)
-
+    pass
     # while result != None:
     #     indexes.append(result)
         
