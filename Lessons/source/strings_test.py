@@ -43,10 +43,10 @@ class StringsTest(unittest.TestCase):
         # Positive test cases (examples) with matching patterns
         assert find_index('abc', '') == 0  # all strings contain empty string
         assert find_index('abc', 'a') == 0  # single letters are easy
-        assert find_index('abc', 'b') == 1
-        assert find_index('abc', 'c') == 2
+        assert find_index('abc', 'b') == 1 
+        assert find_index('abc', 'c') == 2 
         assert find_index('abc', 'ab') == 0  # multiple letters are harder
-        assert find_index('abc', 'bc') == 1
+        assert find_index('abc', 'bc') == 1 
         assert find_index('abc', 'abc') == 0  # all strings contain themselves
         assert find_index('aaa', 'a') == 0  # multiple occurrences
         assert find_index('aaa', 'aa') == 0  # overlapping pattern
@@ -74,6 +74,7 @@ class StringsTest(unittest.TestCase):
         assert find_index('abcabcdabcde', 'abcd') == 3  # multiple occurrences, overlapping prefix
         assert find_index('abra cadabra', 'abra') == 0  # multiple occurrences
         assert find_index('abra cadabra', 'adab') == 6  # overlapping prefix
+        assert find_index('aaab', 'aab') == 1
         # TODO: Write more test cases that check complex patterns or edge cases
         # You'll need a lot more than this to test your algorithm's robustness
         # ...
