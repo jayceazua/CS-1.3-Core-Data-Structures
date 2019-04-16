@@ -30,40 +30,40 @@ def find_index(text, pattern):
     # Get the first index of text and match it with the first index of pattern
     text_index = 0
     pattern_index = 0
-    temp_index = 0
+    ghost_index = 0 
 
     while text_index < len(text):
-        if text[temp_index] == pattern[pattern_index]:
-            temp_index += 1
+        if text[ghost_index] == pattern[pattern_index]:
+            ghost_index += 1
             pattern_index += 1
             if pattern_index == len(pattern):
                 return text_index
         else:
             pattern_index = 0
             text_index += 1
-            temp_index = text_index
+            ghost_index = text_index
     return None
 
     
-def find_index_recursive(text, pattern, text_index=None, pattern_index=None, temp_index=None): 
+def find_index_recursive(text, pattern, text_index=None, pattern_index=None, ghost_index=None):
 
-    if text_index is None and pattern_index is None and temp_index is None:
+    if text_index is None and pattern_index is None and ghost_index is None:
         text_index = 0
         pattern_index = 0
-        temp_index = 0
+        ghost_index = 0
     
     if text_index < len(text):
-        if text[temp_index] == pattern[pattern_index]:
+        if text[ghost_index] == pattern[pattern_index]:
             if pattern_index == (len(pattern) - 1):
                 return text_index
-            temp_index += 1
+            ghost_index += 1
             pattern_index += 1
-            return find_index_recursive(text, pattern, text_index, pattern_index, temp_index)
+            return find_index_recursive(text, pattern, text_index, pattern_index, ghost_index)
         else:
             pattern_index = 0
             text_index += 1
-            temp_index = text_index
-            return find_index_recursive(text, pattern, text_index, pattern_index, temp_index)
+            ghost_index = text_index
+            return find_index_recursive(text, pattern, text_index, pattern_index, ghost_index)
     return None
             
 
@@ -78,6 +78,8 @@ def find_all_indexes(text, pattern):
     # an empty array to store indexes found
     indexes = []
     # call the find index recursive function
+    if contains(text, pattern):
+        return indexes
     # result = find_index_recursive(text, pattern)
     pass
     # while result != None:
