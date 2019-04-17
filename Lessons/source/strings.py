@@ -5,12 +5,13 @@ def contains(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)
-    # Edge Cases
+    # Base Case
     if pattern == '':
         return True
+    # Edge Case
     if text == '':
         return False
-    
+    #
     if find_index_recursive(text, pattern) != None:
         return True
     return False
@@ -26,40 +27,46 @@ def find_index(text, pattern):
         return 0
     if text == '':
         return None
-    # check if the pattern is in the text
-    # Get the first index of text and match it with the first index of pattern
+    #
     text_index = 0
     pattern_index = 0
     ghost_index = 0 
-
-    while text_index < len(text):
+    #
+    while text_index < (len(text)):
+        #
         if text[ghost_index] == pattern[pattern_index]:
             ghost_index += 1
             pattern_index += 1
+            #
             if pattern_index == len(pattern):
                 return text_index
-        else:
+        else: #
             pattern_index = 0
             text_index += 1
             ghost_index = text_index
+    #
     return None
 
     
 def find_index_recursive(text, pattern, text_index=None, pattern_index=None, ghost_index=None):
-
+    #
     if text_index is None and pattern_index is None and ghost_index is None:
         text_index = 0
         pattern_index = 0
         ghost_index = 0
-    
-    if text_index < len(text):
+    #
+    if text_index < len(text) and ghost_index <= (len(text) -1):
+        #
         if text[ghost_index] == pattern[pattern_index]:
+            # 
             if pattern_index == (len(pattern) - 1):
                 return text_index
+            #
             ghost_index += 1
             pattern_index += 1
             return find_index_recursive(text, pattern, text_index, pattern_index, ghost_index)
         else:
+            #
             pattern_index = 0
             text_index += 1
             ghost_index = text_index
@@ -73,19 +80,21 @@ def find_all_indexes(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_all_indexes here (iteratively and/or recursively)
+    # Base Case returns a value without making any subsequent recursive calls. 
+    # It does this for one or more special input values for which the function can be evaluated without recursion.
     if pattern == '':
         return [x for x in range(0, len(text))] 
     # an empty array to store indexes found
     indexes = []
-    # call the find index recursive function
-    if contains(text, pattern):
-        return indexes
-    # result = find_index_recursive(text, pattern)
-    pass
-    # while result != None:
-    #     indexes.append(result)
-        
-    # return indexes
+    #
+    result = find_index_recursive(text, pattern)
+    #
+    while result != None:
+        indexes.append(result)
+        #
+        start_index = result + 1
+        result = find_index_recursive(text, pattern, start_index, 0, start_index)
+    return indexes
 
 
 def test_string_algorithms(text, pattern):
