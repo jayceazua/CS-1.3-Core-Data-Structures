@@ -91,9 +91,6 @@ def binary_search_recursive(array, item, left=None, right=None):
     return binary_search_recursive(array, item, left, right)
 
 
-    
-
-
 def main():
     names = ['Winnie', 'Kojin', 'Brian', 'Nabil', 'Julia', 'Alex', 'Nick']
     contain = 'Julia'
