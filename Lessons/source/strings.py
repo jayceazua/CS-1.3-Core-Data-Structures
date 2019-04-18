@@ -88,8 +88,7 @@ def find_all_indexes(text, pattern):
     indexes = []
     #
     result = find_index_recursive(text, pattern)
-    #
-    while result != None:
+    while result != None: #
         indexes.append(result)
         #
         start_index = result + 1
