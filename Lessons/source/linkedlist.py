@@ -85,14 +85,13 @@ class LinkedList(object):
         #     return self.tail.data
         # current_node = self.head
         # index_counter = 0
-        # while index_counter <= self.size: # similar to current_node not being None
+        # while current_node != None: 
         #     if index_counter == index:
         #         return current_node.data
         #     current_node = current_node.next
         #     index_counter += 1
-        list_of_ll = self.items()
+        list_of_ll = self.items() # O(n)
         return list_of_ll[index]
-
 
     def insert_at_index(self, index, item):
         """Insert the given item at the given index in this linked list, or
@@ -103,7 +102,40 @@ class LinkedList(object):
         if not (0 <= index <= self.size):
             raise ValueError('List index out of range: {}'.format(index))
         # TODO: Find the node before the given index and insert item after it
+        previous_node = None
+        current_node = self.head # traveral node if it is head O(1)
+        new_node = Node(item)
+        index_counter = 0
 
+        if self.is_empty():
+            self.head = new_node
+            self.tail = new_node
+            self.size += 1
+            return
+            
+        if self.size == 1:
+            new_node.next = current_node
+            self.head = new_node
+            self.size += 1
+            return
+        
+        while current_node != None:
+            index_counter += 1
+            previous_node = current_node
+            current_node = current_node.next
+            if index_counter == index: # found
+                # insert new node
+                new_node.next = previous_node.next
+                previous_node.next = new_node
+                self.size += 1
+                if index == (self.size - 1):
+                    self.tail = new_node
+                
+        
+        
+            
+
+        
 
     def append(self, item):
         """Insert the given item at the tail of this linked list.
@@ -158,10 +190,11 @@ class LinkedList(object):
     def replace(self, old_item, new_item):
         """Replace the given old_item in this linked list with given new_item
         using the same node, or raise ValueError if old_item is not found.
-        Best case running time: ??? under what conditions? [TODO]
-        Worst case running time: ??? under what conditions? [TODO]"""
+        Best case running time: O(1) under what conditions? [TODO]
+        Worst case running time: O(n) under what conditions? [TODO]"""
         # TODO: Find the node containing the given old_item and replace its
         # data with new_item, without creating a new node object
+        
         current_node = self.head
         if current_node.data == old_item:
             current_node.data = new_item
