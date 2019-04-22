@@ -28,6 +28,7 @@ class HashTable(object):
         Best and worst case running time: ??? under what conditions? [TODO]"""
         # TODO: Calculate load factor
         # return ...
+        return float(self.size) / len(self.buckets)
 
     def keys(self):
         """Return a list of all keys in this hash table.
