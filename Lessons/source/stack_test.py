@@ -56,10 +56,12 @@ class StackTest(unittest.TestCase):
         assert s.peek() is None
 
     def test_pop(self):
-        s = Stack(['A', 'B', 'C'])
+        s = Stack(['A', 'C', 'B', 'C'])
         assert s.pop() == 'C'
-        assert s.length() == 2
+        assert s.length() == 3
         assert s.pop() == 'B'
+        assert s.length() == 2
+        assert s.pop() == 'C'
         assert s.length() == 1
         assert s.pop() == 'A'
         assert s.length() == 0

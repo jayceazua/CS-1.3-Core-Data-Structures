@@ -5,7 +5,7 @@ from linkedlist import LinkedList
 
 # Implement LinkedQueue below, then change the assignment at the bottom
 # to use this Queue implementation to verify it passes all tests
-class LinkedQueue(object):
+class LinkedQueue(object): # FILO
 
     def __init__(self, iterable=None):
         """Initialize this queue and enqueue the given items, if any."""
