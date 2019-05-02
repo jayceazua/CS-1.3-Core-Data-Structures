@@ -22,26 +22,32 @@ class LinkedQueue(object): # FILO
     def is_empty(self):
         """Return True if this queue is empty, or False otherwise."""
         # TODO: Check if empty
+        return self.list.head == None
 
     def length(self):
         """Return the number of items in this queue."""
         # TODO: Count number of items
+        return self.list.size
 
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – Why? because we are finding the tail of the linkedlist which is instant. """
         # TODO: Insert given item
+        self.list.append(item)
 
     def front(self):
         """Return the item at the front of this queue without removing it,
         or None if this queue is empty."""
         # TODO: Return front item, if any
+        return self.list.head.data
 
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
         Running time: O(???) – Why? [TODO]"""
         # TODO: Remove and return front item, if any
+        if self.is_empty == None:
+            raise ValueError("No one is on queue")
 
 
 # Implement ArrayQueue below, then change the assignment at the bottom
