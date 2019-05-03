@@ -62,7 +62,8 @@ class HashTable(object):
 
     def length(self):
         """Return the number of key-value entries by traversing its buckets.
-        Best and worst case running time: O(1) is the best way if you have a property to call, and O(n) worst"""
+        Best and worst case running time: O(1) is the best way if you have a property to call, 
+        O(n) worst case because it has to traverse through every bucket once"""
         # Count number of key-value entries in each of the buckets
         # hashTable_size = 0
         # for bucket in self.buckets:
@@ -153,9 +154,14 @@ class HashTable(object):
         elif new_size is 0:
             new_size = len(self.buckets) / 2  # Half size
         # TODO: Get a list to temporarily hold all current key-value entries
+        new_size = int(new_size)
         # TODO: Create a new list of new_size total empty linked list buckets
+        temp_list = self.items()
         # TODO: Insert each key-value entry into the new list of buckets,
         # which will rehash them into a new bucket index based on the new size
+        self.__init__(new_size)  # calling dunder method acccepability??
+        for item in temp_list:
+            self.set(item[0], item[1])
 
 
 def test_hash_table():
