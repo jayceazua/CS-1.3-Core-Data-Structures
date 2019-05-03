@@ -1,35 +1,35 @@
-from set import MySet as mySet
+from set import HashSet 
 import unittest
 
 
 class SetTest(unittest.TestCase):
     def test_init_with_elements(self):
         names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
-        s = mySet()
+        s = HashSet()
         assert s.size == 0
-        s = mySet(names)
+        s = HashSet(names)
         assert s.size == 7
         assert (names[0] in s) is True
         assert (names[2] in s) is True
         assert (names[5] in s) is True
 
     def test_init_without_elements(self):
-        s = mySet()
+        s = HashSet()
         assert s.size == 0
         assert len(s.container) == 0
 
     def test_contains(self):
         names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
-        s = mySet()
+        s = HashSet()
         assert s.size == 0
-        s = mySet(names)
+        s = HashSet(names)
         assert s.size == 7
         assert (names[0] in s) is True
         assert (names[2] in s) is True
         assert (names[5] in s) is True
 
     def test_add(self):
-        s = mySet()
+        s = HashSet()
         assert s.size == 0
         assert len(s.container) == 0
         s.add("something")
@@ -41,7 +41,7 @@ class SetTest(unittest.TestCase):
 
     def test_remove(self):
         names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
-        s = mySet(names)
+        s = HashSet(names)
         assert s.size == 7
         s.remove("Winnie")
         assert s.size == 6
@@ -50,8 +50,8 @@ class SetTest(unittest.TestCase):
     def test_intersection(self):
         names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
         names2 = ["Jack", "Jeremy", "Jake", "Jayce", "Julia", "Alex"]
-        s1 = mySet(names)
-        s2 = mySet(names2)
+        s1 = HashSet(names)
+        s2 = HashSet(names2)
         assert s1.size == 7
         assert s2.size == 6
         s1_s2_inter = s1.intersection(s2)
@@ -66,8 +66,8 @@ class SetTest(unittest.TestCase):
     def test_union(self):
         names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
         names2 = ["Jack", "Jeremy", "Jake", "Jayce", "Julia", "Alex"]
-        s1 = mySet(names)
-        s2 = mySet(names2)
+        s1 = HashSet(names)
+        s2 = HashSet(names2)
         assert s1.size == 7
         assert s2.size == 6
         union = s1.union(s2)
@@ -81,8 +81,8 @@ class SetTest(unittest.TestCase):
     def test_difference(self):
         names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
         names2 = ["Jack", "Jeremy", "Jake", "Jayce", "Julia", "Alex"]
-        s1 = mySet(names)
-        s2 = mySet(names2)
+        s1 = HashSet(names)
+        s2 = HashSet(names2)
         diff1 = s1.difference(s2)
         diff2 = s2.difference(s1)
         assert diff1.size == 5
@@ -98,8 +98,8 @@ class SetTest(unittest.TestCase):
     def test_is_subset(self):
         names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
         names2 = ["Jack", "Jeremy", "Jake", "Jayce", "Julia", "Alex"]
-        s1 = mySet(names)
-        s2 = mySet(names2)
+        s1 = HashSet(names)
+        s2 = HashSet(names2)
         assert s1.size == 7
         assert s2.size == 6
         union = s1.union(s2)
@@ -107,5 +107,5 @@ class SetTest(unittest.TestCase):
         assert s1.is_subset(union) is True
         assert s2.is_subset(union) is True
         names3 = ["this", "that", "thing"]
-        s3 = mySet(names3)
+        s3 = HashSet(names3)
         assert s3.is_subset(union) is False
