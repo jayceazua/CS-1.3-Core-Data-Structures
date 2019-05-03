@@ -10,9 +10,7 @@ class HashSet (object):
         self.size += self.elements.add(key, value)
 
   def __iter__(self):
-        for element in self.elements:
-            yield element
-
+    pass
   def get_elements(self):
     pass
   def length(self):
@@ -31,11 +29,6 @@ class HashSet (object):
     pass
   def is_subset(self, other_set):
     pass
-# class Set(HashTable):
-#     def __init__(self, elements=None):
-#         pass
-
-
 
 
 if __name__ == "__main__":
