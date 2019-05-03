@@ -160,9 +160,7 @@ class HashTable(object):
         # TODO: Insert each key-value entry into the new list of buckets,
         # which will rehash them into a new bucket index based on the new size
         self.__init__(new_size)
-        for item in temp_list:
-            key = item[0]
-            value = item[1]
+        for key, value in temp_list: # this breaks up the properties of the item "deconstructor"
             self.set(key, value)
 
 
