@@ -31,13 +31,35 @@ class HashSet (object):
     return self.container.contains(element)
 # Part 2
   def union(self, other_set):
-    pass
+    union = HashSet()
+    for key, _ in self.container.items():
+      union.add(key)
+
+    for key, _ in other_set.container.items():
+      if key not in union:
+        union.add(key)
+    return union
+
   def intersection(self, other_set):
-    pass
+    union = HashSet()
+    for key, _ in self.container.items():
+      if key in other_set:
+        union.add(key)
+    print(union)
+    return union
+
   def difference(self, other_set):
-    pass
+    union = HashSet()
+    for key, _ in self.container.items():
+      if key not in other_set:
+        union.add(key)
+    return union
+
   def is_subset(self, other_set):
-    pass
+    for key, _ in self.container.items():
+        if key not in other_set:
+            return False
+    return True
 
 
 if __name__ == "__main__":

@@ -25,7 +25,6 @@ class HashSetTest(unittest.TestCase):
       assert s.size == 8
       assert s.contains("Katherine") == True
       
-
     def test_remove(self):
       names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
       s = HashSet(names)
@@ -43,19 +42,52 @@ class HashSetTest(unittest.TestCase):
       assert s.size == 7
       assert s.contains("Alex") == True
       assert s.contains("Jose") ==  False
-
 # Part 2
     def test_union(self):
-      pass
+        names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
+        names2 = ["Jack", "Jeremy", "Jake", "Jayce", "Julia", "Alex"]
+        s1 = HashSet(names)
+        s2 = HashSet(names2)
+        assert s1.size == 7
+        assert s2.size == 6
+        union = s1.union(s2)
+        assert union.size == 11
 
     def test_intersection(self):
-      pass
+      names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
+      names2 = ["Jack", "Jeremy", "Jake", "Jayce", "Julia", "Alex"]
+      s1 = HashSet(names)
+      s2 = HashSet(names2)
+      assert s1.size == 7
+      assert s2.size == 6
+      s1_s2_inter = s1.intersection(s2)
+      assert s1_s2_inter.size == 2
 
     def test_difference(self):
-      pass
+        names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
+        names2 = ["Jack", "Jeremy", "Jake", "Jayce", "Julia", "Alex"]
+        s1 = HashSet(names)
+        s2 = HashSet(names2)
+        diff1 = s1.difference(s2)
+        diff2 = s2.difference(s1)
+        assert diff1.size == 5
+        assert diff2.size == 4
+        
 
     def test_is_subset(self):
-      pass
+        names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
+        names2 = ["Jack", "Jeremy", "Jake", "Jayce", "Julia", "Alex"]
+        s1 = HashSet(names)
+        s2 = HashSet(names2)
+        assert s1.size == 7
+        assert s2.size == 6
+        union = s1.union(s2)
+        assert union.size == 11
+        assert s1.is_subset(union) is True
+        assert s2.is_subset(union) is True
+        names3 = ["this", "that", "thing"]
+        s3 = HashSet(names3)
+        assert s3.is_subset(union) is False
 
 
 if __name__ == '__main__':
