@@ -7,8 +7,7 @@ class HashSet (object):
     self.size = self.container.size
     if elements is not None:
       for item in elements:
-        self.size += 1
-        self.container.set(item, None)
+        self.add(item)
 
   def __str__(self):
     """Return a formatted string representation of this hash table."""
@@ -25,10 +24,8 @@ class HashSet (object):
   def remove(self, element):
     if self.size == 0:
       raise ValueError("Nothing to remove, set is empty")
-    if self.contains(element):
-      self.size -= 1
-      self.container.delete(element)
-    raise ValueError("Element does not exist")
+    self.size -= 1
+    self.container.delete(element)
 
   def contains(self, element):
     return self.container.contains(element)
