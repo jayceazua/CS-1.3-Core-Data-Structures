@@ -6,7 +6,6 @@ class HashSet (object):
     self.container = HashTable()
     self.size = self.container.size
     if elements is not None:
-      print(elements)
       for item in elements:
         self.size += 1
         self.container.set(item, None)
@@ -16,8 +15,6 @@ class HashSet (object):
     items = ["{!r}".format(key) for key, _ in self.container.items()]
     return "{" + ", ".join(items) + "}"
 
-  def __iter__(self):
-    return self.container.__iter__()
 # Part 1
   def add(self, element):
     if self.contains(element):
@@ -26,6 +23,8 @@ class HashSet (object):
     self.container.set(element, None)
 
   def remove(self, element):
+    if self.size == 0:
+      raise ValueError("Nothing to remove, set is empty")
     if self.contains(element):
       self.size -= 1
       self.container.delete(element)
@@ -45,4 +44,6 @@ class HashSet (object):
 
 
 if __name__ == "__main__":
-  pass
+  names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
+  s = HashSet(names)
+  

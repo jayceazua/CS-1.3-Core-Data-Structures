@@ -9,8 +9,8 @@ class HashSetTest(unittest.TestCase):
     def test_init_with_elements(self):
       names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
       s = HashSet(names)
-      print(s.container)
       assert s.size == 7
+      assert s.contains("Kojin") == True
 
     def test_init_without_elements(self):
       s = HashSet()
@@ -18,23 +18,22 @@ class HashSetTest(unittest.TestCase):
       assert len(s.container) == 0
 # Part 1
     def test_add(self):
-      s = HashSet()
-      assert s.size == 0
-      assert len(s.container) == 0
-      s.add("something")
-      assert s.size == 1
-      self.assertCountEqual(s.container.keys(), ["something"])
-      s.add("another")
-      assert s.size == 2
-      self.assertCountEqual(s.container.keys(), ["something", "another"])
+      names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
+      s = HashSet(names)
+      assert s.size == 7
+      s.add("Katherine")
+      assert s.size == 8
+      assert s.contains("Katherine") == True
+      
 
     def test_remove(self):
       names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
       s = HashSet(names)
       assert s.size == 7
-      s.remove("Winnie")
+      assert s.contains("Nabil") == True
+      s.remove("Nabil")
       assert s.size == 6
-      assert ("Winnie" in s) is False
+      assert s.contains("Nabil") == False
 
     def test_contains(self):
       names = ["Winnie", "Kojin", "Brian", "Nabil", "Julia", "Alex", "Nick"]
@@ -42,9 +41,9 @@ class HashSetTest(unittest.TestCase):
       assert s.size == 0
       s = HashSet(names)
       assert s.size == 7
-      assert (names[0] in s) is True
-      assert (names[2] in s) is True
-      assert (names[5] in s) is True
+      assert s.contains("Alex") == True
+      assert s.contains("Jose") ==  False
+
 # Part 2
     def test_union(self):
       pass
