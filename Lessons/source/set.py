@@ -14,7 +14,7 @@ class HashSet (object):
   def __str__(self):
     """Return a formatted string representation of this hash table."""
     items = ["{!r}".format(key) for key, _ in self.container.items()]
-    return "{" + ", ".join(items) + "}
+    return "{" + ", ".join(items) + "}"
 
   def __iter__(self):
     return self.container.__iter__()
