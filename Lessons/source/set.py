@@ -32,8 +32,8 @@ class HashSet (object):
 
 # Part 2
   def union(self, other_set):
-    # union = HashSet()
     pass
+    # union = HashSet()
     # for key, _ in self.container.items():
     #   union.add(key)
 
